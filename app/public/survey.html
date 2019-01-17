@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Survey</title>
+    <meta charset="UTF-8">
+    <title>Survey</title>
 
-  <!-- Latest compiled and minified CSS & JS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -18,151 +18,261 @@
 
 
 
-  <div class="card-body">
+    <div class="card-body">
 
-    <h2>Survey Question</h2>
-    <hr>
+        <h2>Survey Questions</h2>
+        <hr>
 
-    <form role="form" method="POST">
-      <div class="form-group">
-
-        
-
-    <!-- Input Form Goes Here -->
-    <h3>About You</h3>
-    <label for="usersName">Name (Required)</label>
-    <input type="name" class="form-control" id="usersName">
-
-    <label for="usersPhoto">Link to Photo Image (Required)</label>
-    <input type="photo" class="form-control" id="usersPhoto">
-
-    <hr>
-
-    <!-- Ten Questions Go Here -->
-    <h3>Question 1</h3>
+        <form role="form" method="POST">
+            <div class="form-group">
 
 
-        <label for="reserve-name">Name</label>
-        <input type="text" class="form-control" id="reserve-name">
-      </div>
-      <div class="form-group">
-        <label for="reserve-phone">Phone Number</label>
-        <input type="text" class="form-control" id="reserve-phone">
-      </div>
-      <div class="form-group">
-        <label for="reserve-email">Email</label>
-        <input type="text" class="form-control" id="reserve-email">
-      </div>
-      <div class="form-group">
-        <label for="reserve-unique-id">Unique ID</label>
-        <input type="text" class="form-control" id="reserve-unique-id">
-      </div>
-      <button type="submit" class="btn btn-primary submit">Submit</button>
-    </form>
-  </div>
-  </div>
-  </div>
-  </div>
 
+                <!-- Input Form Goes Here -->
+                <h3>About You</h3>
+                <label for="usersName">Name (Required)</label>
+                <input type="name" class="form-control" id="usersName">
 
-  <footer class="footer">
-    <div class="container">
-      <p>
-        <a href="/api/tables">API Table Link</a> |
-        <a href="/api/waitlist">API Wait List</a>
+                <label for="usersPhoto">Link to Photo Image (Required)</label>
+                <input type="photo" class="form-control" id="usersPhoto">
+
+                <hr>
+
+                <!-- Ten Questions Go Here -->
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 1</h4>
+                        <label for="question1">Question 1</label>
+                        <select id="question1" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 2</h4>
+                        <label for="question2">Question 2</label>
+                        <select id="question2" class="form-control" id="scores">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 3</h4>
+                        <label for="question3">Question 3</label>
+                        <select id="question3" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 4</h4>
+                        <label for="question4">Question 4</label>
+                        <select id="question4" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 5</h4>
+                        <label for="question5">Question 5</label>
+                        <select id="question5" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 6</h4>
+                        <label for="question6">Question 6</label>
+                        <select id="question6" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 7</h4>
+                        <label for="question7">Question 7</label>
+                        <select id="question7" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 8</h4>
+                        <label for="question8">Question 8</label>
+                        <select id="question8" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 9</h4>
+                        <label for="question9">Question 9</label>
+                        <select id="question9" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <h4>Questions 10</h4>
+                        <label for="question10">Question 10</label>
+                        <select id="question10" class="form-control">
+                            <option selected>Select an Option</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary submit">Submit</button>
+        </form>
     </div>
-  </footer>
+    </div>
+    </div>
+    </div>
+    
 
-  </div>
-
-
-
-  <!-- Modal -->
-  <div id="results-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button class="close" data-dismiss="modal">&times;</button>
-          <h2 class="modal-title"><strong>Table Reserved</strong></h2>
-        </div>
-        <div class="modal-body">
-          <h2 id="table-name"></h2>
-          <img id="table-img" alt="">
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+    <footer class="footer">
+            <div class="container">
+                    <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/ambellinger/Friend_Finder.git">GitHub Repo</a>
+                  </div>
+    </footer>
 
     </div>
-  </div>
+
+
+
+    <!-- Modal -->
+    <div id="results-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title"><strong>Table Reserved</strong></h2>
+                </div>
+                <div class="modal-body">
+                    <h2 id="table-name"></h2>
+                    <img id="table-img" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 
 </html>
 
-<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<!-- Sending the data to the server-->
 <script type="text/javascript">
-  // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
-  // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
-  // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
-  // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
-  $(".submit").on("click", function (event) {
-    event.preventDefault();
+    $(".submit").on("click", function (event) {
+        event.preventDefault();
 
-    // Here we grab the form elements
-    var newReservation = {
-      customerName: $("#reserve-name").val().trim(),
-      phoneNumber: $("#reserve-phone").val().trim(),
-      customerEmail: $("#reserve-email").val().trim(),
-      customerID: $("#reserve-unique-id").val().trim()
-    };
+        // Here we grab the form elements
+        var answers = {
+            userName: $("#usersName").val().trim(),
+            userPhoto: $("#usersPhoto").val().trim(),
+            scores: $("#scores").val()
+        };
 
-    console.log(newReservation);
+        console.log(answers);
 
-    // This line is the magic. It"s very similar to the standard ajax function we used.
-    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-    // depending on if a tables is available or not.
+        // This line is the magic. It"s very similar to the standard ajax function we used.
+        // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+        // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+        // depending on if a tables is available or not.
 
-    $.post("/api/tables", newReservation,
-      function (data) {
+        // $.post("/api/friends", friends,
+        //     function (data) {
 
-        // If a table is available... tell user they are booked.
-        if (data) {
-          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-          $("#table-name").text(data.customerName);
+        //         // If a table is available... tell user they are booked.
+        //         if (data) {
+        //             // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+        //             $("#table-name").text(data.customerName);
 
-          //since we don't have our table array object with url property
-          //we made the link static. 
-          //If you want it to read from the table array object, 
-          //you need to declare in tableData.js first. 
-          //Then you can call it with data.urlImage
+        //             //since we don't have our table array object with url property
+        //             //we made the link static. 
+        //             //If you want it to read from the table array object, 
+        //             //you need to declare in tableData.js first. 
+        //             //Then you can call it with data.urlImage
 
-          $("#table-img").attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYtjE_SeV9LQSHj27b6riJ1CG0Z1CokoZP-TOd7J3Bd7uC6Pfz");
-          // Show the modal for current reservation
-          $("#results-modal").modal("toggle");
+        //             $("#table-img").attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYtjE_SeV9LQSHj27b6riJ1CG0Z1CokoZP-TOd7J3Bd7uC6Pfz");
+        //             // Show the modal for current reservation
+        //             $("#results-modal").modal("toggle");
 
 
-          alert("Yay! You are officially booked!");
-        }
+        //             alert("Yay! You are officially booked!");
+        //         }
 
-        // If a table is available... tell user they on the waiting list.
-        else {
-          alert("Sorry you are on the wait list");
-        }
+        //         // If a table is available... tell user they on the waiting list.
+        //         else {
+        //             alert("Sorry you are on the wait list");
+        //         }
 
-        // Clear the form when submitting
-        $("#reserve-name").val("");
-        $("#reserve-phone").val("");
-        $("#reserve-email").val("");
-        $("#reserve-unique-id").val("");
+        //         // Clear the form when submitting
+        //         $("#reserve-name").val("");
+        //         $("#reserve-phone").val("");
+        //         $("#reserve-email").val("");
+        //         $("#reserve-unique-id").val("");
 
-      });
+        //     });
 
-  });
+    });
 
 </script>
