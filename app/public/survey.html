@@ -225,53 +225,35 @@
         event.preventDefault();
 
         // Here we grab the form elements
-        var friends = {
+        var usersAnswers = {
             userName: $("#usersName").val().trim(),
             userPhoto: $("#usersPhoto").val().trim(),
-            scores: $("#question1").val(),
-            scores: $("#question2").append()
+            scores: [ $("#question1").val(),
+                     $("#question2").val(),
+                     $("#question3").val(),
+                     $("#question4").val(),
+                     $("#question5").val(),
+                     $("#question6").val(),
+                     $("#question7").val(),
+                     $("#question8").val(),
+                     $("#question9").val(),
+                     $("#question10").val() ]
+
         };
 
-        console.log(friends);
+        console.log(usersAnswers);
 
         // This line is the magic. It"s very similar to the standard ajax function we used.
         // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
         // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
         // depending on if a tables is available or not.
 
-         $.post("/api/friends", friends,
+         $.post("/api/friends", usersAnswers,
               function (data) {
 
-                  // If a table is available... tell user they are booked.
-                  if (data) {
-                      // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                      $("#table-name").text(data.customerName);
-                     //since we don't have our table array object with url property
-                    //we made the link static. 
-                      //If you want it to read from the table array object, 
-                      //you need to declare in tableData.js first. 
-                      //Then you can call it with data.urlImage
+           //   alert("posted into the friends api");
 
-                      $("#table-img").attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYtjE_SeV9LQSHj27b6riJ1CG0Z1CokoZP-TOd7J3Bd7uC6Pfz");
-                      // Show the modal for current reservation
-                      $("#results-modal").modal("toggle");
-
-
-                      alert("Yay! You are officially booked!");
-                  }
-
-                  // If a table is available... tell user they on the waiting list.
-                  else {
-                      alert("Sorry you are on the wait list");
-                  }
-
-                  // Clear the form when submitting
-                  $("#reserve-name").val("");
-                  $("#reserve-phone").val("");
-                  $("#reserve-email").val("");
-                  $("#reserve-unique-id").val("");
-
-              });
+             });
 
     });
 

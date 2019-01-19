@@ -11,8 +11,13 @@ module.exports = function(app) {
 
 
     app.post("/api/friends", function(req, res) {
-        var userdata=req.body;
-        console.log("posted: " + userdata);
+        var user = req.body;
+        var usersScores = user.scores;
+
+        console.log(usersScores);
+        console.log(user);
+       friends.push(user);
     })
+
 
 }
