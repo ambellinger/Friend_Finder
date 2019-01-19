@@ -189,7 +189,7 @@
 
 
     <!-- Modal -->
-    <div id="results-modal" class="modal fade" role="dialog">
+    <div id="results-modal" class="modal" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -199,8 +199,8 @@
                     <h2 class="modal-title"><strong>Your match</strong></h2>
                 </div>
                 <div class="modal-body">
-                    <h2 id="name"></h2>
-                    <img id="photo" alt="">
+                    <h2 id="modal-name"></h2>
+                    <img id="modal-photo" alt="">
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal">Close</button>
@@ -251,6 +251,11 @@
          $.post("/api/friends", usersAnswers,
               function (data) {
 
+                $("#modal-name").text(data.name);
+                $("#modal-photo").attr("src", data.photo);
+                $(".modal").modal("toggle");
+                
+                
            //   alert("posted into the friends api");
 
              });

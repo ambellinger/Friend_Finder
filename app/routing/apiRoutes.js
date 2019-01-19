@@ -14,8 +14,8 @@ module.exports = function (app) {
 
 
     app.post("/api/friends", function (req, res) {
-        var user = req.body;
-        var usersScores = user.scores;
+        var usersAnswers = req.body;
+        var usersScores = usersAnswers.scores;
 
 
         var Totaldifference = [];
@@ -38,8 +38,8 @@ module.exports = function (app) {
        
                 
         console.log(usersScores);
-        console.log(user);
-        friends.push(user);
+        console.log(usersAnswers);
+        friends.push(usersAnswers);
         
       /////THE COMPARE LOOP ISN'T WORKING///
       arraySort(Totaldifference, 'friendResult');
