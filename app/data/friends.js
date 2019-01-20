@@ -109,7 +109,7 @@ var friends = [
 
     {
         "name": "Remo",
-        "photo": "https://photos.app.goo.gl/QF7KhyJRYXMfV2oz7",
+        "photo": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/50104242_551252928688537_2200734426357301248_n.jpg?_nc_cat=105&_nc_ht=scontent-ort2-1.xx&oh=fd6fd96e79187d9c356a677859835943&oe=5CBC0417",
         "scores": [
             5,
             4,
@@ -127,7 +127,7 @@ var friends = [
 
     {
         "name": "Malo",
-        "photo": "https://photos.app.goo.gl/cDycqDRcHPd1i9Pj7",
+        "photo": "https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/50282456_551252912021872_6251307710868881408_n.jpg?_nc_cat=107&_nc_ht=scontent-ort2-1.xx&oh=733a564d27d9b389add0511b00839fc7&oe=5CC272C4",
         "scores": [
             3,
             5,
