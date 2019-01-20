@@ -40,8 +40,7 @@ module.exports = function (app) {
         console.log(usersScores);
         console.log(usersAnswers);
         friends.push(usersAnswers);
-        
-      /////THE COMPARE LOOP ISN'T WORKING///
+    
       arraySort(Totaldifference, 'friendResult');
       console.log("Closest match:" + Totaldifference[0].name);
 

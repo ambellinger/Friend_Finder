@@ -1,5 +1,5 @@
 # FriendFinder
-FriendFinder helps you find a new friend. Answer a set of questions from a range of strongly disagree to strongly agree, you can match with some of the cutest, cuddlest pet friends. Once you finish answering, you are also added to the friend database so someone can match with you!
+FriendFinder helps you find a new friend. After answering a set of questions from a range of strongly disagree to strongly agree, you can match with some of the cutest, cuddlest pet friends. Once you finish answering, you are also added to the friend database so someone can match with you!
 
 ## Technologies Used
 * Javascript
@@ -31,14 +31,33 @@ You are then added to the friends api
 ![api](/images/friendsapi.PNG)
 
 
+### How to build Friend Finder
+
+The first thing you do is set up the server.
+
+```
+//Dependencies
+var express = require("express");
+
+//Tells node that we are using an express server
+var app = express();
+
+//Sets the port
+var PORT = process.env.PORT || 8080;
+
+//sets up express to handle data parsing
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 
+//Listener
+app.listen(PORT, function(){
+    console.log("App listening on PORT: " + PORT);
+})
+```
 
 
-
-
-
-The first thing is to write your questions!
+Next write your questions in a form format.
 
 ```
                          <h4>Questions 1</h4>
@@ -55,10 +74,9 @@ The first thing is to write your questions!
 ```
 
 
-
 The application needs not only a set of pre-entered friends but a place to add friends as they get entered into the temporary database.
 
-An array of objects must be created with the properties that need to be filled out, the name of the friend, their photo, and their answers (scores) to the questions.
+An array of objects must be created with the properties that need to be filled out: the name of the friend, their photo, and their answers (scores) to the questions.
 
 ``` 
 var friends = [
@@ -83,115 +101,114 @@ var friends = [
 module.exports = friends;
 
 ```
-
-
-
-The user is then presented with the products available in the database
-
-``` 
- connection.query("SELECT * FROM products", function (err, result, fields) {
-    if (err) throw err;
-    //console.log(result);
-    console.table(result);
-```
-### Beginning the Program
-
-![beginning-program](/images/bamazon_beginning_program.PNG)
-
-
-Inquirer (NPM) is then used to save the user's input. 
+After the basic html pages have been built, including the form with the survey questions, routes are created to link everything together utilizing npm path.
 
 ```
- inquirer
-      .prompt([
-        {
-          name: "choice",
-          message: "What is the ID of the item you would like to purchase? [Quit with Q]",
-          type: "input"
-        },
-        {
-          name: "quantity",
-          type: "input",
-          message: "How many would you like? [Quit with Q]"
-        }
-      ])
+//Dependencies
+var path = require("path");
+
+//Routing
+
+module.exports = function(app) {
+    app.get("/survey", function(req, res) {
+       // res.send("Survey");
+        res.sendFile(path.join(__dirname, "../public/survey.html"));
+      });
+
+    app.get("*", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    });
+}
 
 ```
 
-The program then saves these choices and then compares their answers to the information stored in the database. 
+The user's answers must be saved from the form when they click the submit button.
 
 ```
-.then(function (answer) {
+  $(".submit").on("click", function (event) {
+        event.preventDefault();
 
-        //For loop
-        for (var i = 0; i < result.length; i++) {
-          if (result[i].item_id === parseInt(answer.choice)) {
-            chosenProduct = result[i];
-            console.log("This is the result:" + chosenProduct);
-          }
+        // Here we grab the form elements
+        var usersAnswers = {
+            userName: $("#usersName").val().trim(),
+            userPhoto: $("#usersPhoto").val().trim(),
+            scores: [ $("#question1").val(),
+                     $("#question2").val(),
+                     $("#question3").val(),
+                     $("#question4").val(),
+                     $("#question5").val(),
+                     $("#question6").val(),
+                     $("#question7").val(),
+                     $("#question8").val(),
+                     $("#question9").val(),
+                     $("#question10").val() ]
+
         };
-
 ```
 
-The price is calculated by multiplying the amount given by the user and the price saved in the database.
+On the server side, they are then compared to the saved friend's answers. By comparing the absolute differences, the friend with the least difference with the user is then presented as the best match.
 
 ```
- var total = chosenAmount * chosenProduct.price;
- console.log("Your total is: $" + total);
-```
+app.post("/api/friends", function (req, res) {
+        var usersAnswers = req.body;
+        var usersScores = usersAnswers.scores;
 
-The database is then updated with the new amounts
 
-```
-    connection.query(
-            "UPDATE products SET ? WHERE ?",
-            [
-              {
-                stock_quantity: newStock
-              },
-              {
-                item_id: chosenId
-              }
-            ],
-            function (error) {
-              if (error) throw err;
-              console.log("Stock quantity changed");
-              start();
+        var Totaldifference = [];
+        var results = 0;
+        totalResult = 0;
+
+        for (var i = 0; i < friends.length; i++) {
+            console.log(friends[i]);
+
+            results=0;
+            for (var j = 0; j < friends[i].scores.length; j++) {
+                results += Math.abs(parseInt(usersScores[j]) - parseInt(friends[i].scores[j]));
+
+                
+               // console.log("total results" + friendResult);
             }
-          )
+            Totaldifference.push({ name: friends[i].name, photo: friends[i].photo, friendResult: Math.abs(results) });
+            console.log("results" + results);
+        }
+       
+                
+        console.log(usersScores);
+        console.log(usersAnswers);
+        friends.push(usersAnswers);
+        
+     
+      arraySort(Totaldifference, 'friendResult');
+      console.log("Closest match:" + Totaldifference[0].name);
+
+        return res.json(Totaldifference[0]);
+    })
+
+}
 ```
 
-### Purchasing
-
-![purchasing-1-object](/images/bamazon_purchasing1.PNG)
-
-### Purchasing multiple
-
-![purchasing-multiple-objects](/images/bamazon_purchasing2.PNG)
-
-If the amount that is chosen by the user, exceeds that of the amount in the database, the program alerts the user and the programs restarts.
+The result is then presented on the client side in the form of a modal.
 
 ```
-if (chosenAmount > chosenProduct.stock_quantity) {
-          console.log("Insufficient Quantity");
-          start();
+
+         $.post("/api/friends", usersAnswers,
+              function (data) {
+
+                $("#modal-name").text(data.name);
+                $("#modal-photo").attr("src", data.photo);
+                $("#modal-photo").attr("width", "50%")
+                $(".modal").modal("toggle");
+
+             });
+
+
 ```
 
-### Insufficient Quantity
-
-![insufficient-quantity](/images/bamazon_insufficent_quantity.PNG)
-
-
-The user can exit the program by selecting the letter q.
-
-### Quitting
-
-![quiting](/images/bamazon_quiting_program.PNG)
 
 ## Challenges and Future Improvements
-Creating and populating the database using mySQL was rather easy. However, the application became harder to develop once the user's input had to be compared with the information stored within the database. 
+Understanding the routing and going back and forth between the client and server side was extremely confusing. I had a hard time really grasping exactly what I was doing.
 
-As of right now, there are bugs remaning in the exiting of the application. Q must be selected in the first prompt; if an item is selected but then the user tries to exit on the second prompt, an error is thrown. In addition, what functionality the app has to exit is a bit awkward and could use some fine tuning. 
+In terms of improvements, I would definately improve upon the appearance of the website. It's rather unappealling looking.
 
 ## Acknowlegments 
-I want to recognize Phil's contribution to the exiting portion of the application. 
+I want to recognize Phil's contribution to helping create the mathematical equation to find the closest match. Also, I want to acknowledge Zach Garcia's help with getting the modal to work. 
