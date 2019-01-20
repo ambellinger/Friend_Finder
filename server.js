@@ -8,7 +8,7 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 
-var connection = mysql.createConnection({
+var connection = createConnection({
     host: "enqhzd10cxh7hv2e.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     port: 3306,
     user: "epezy02o9civcuuo",
